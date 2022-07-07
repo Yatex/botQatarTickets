@@ -11,27 +11,9 @@ def randomPosition():
     pyautogui.moveTo(x, y)
 
 while(TRUE):
-    # for i in range(0,5):
-    #     time.sleep(5)
-    #     randomPosition()
-    
-    time.sleep(2)
-    #unclick checkbox
-
-    text = pytesseract.image_to_string('check.png')
-    print(text)
-
-    # infoCheck = pyautogui.locateOnScreen('check.png', confidence=0.9)
-    # pyautogui.moveTo(infoCheck[0], infoCheck[1])
-    # print('CHEQUEANDO CLICK')
-    # print(infoCheck)
-    # pyautogui.click()
-    time.sleep(5)
-    # try:
-        # infoCheck = pyautogui.locateOnScreen('check.png', confidence=0.9)
-        # pyautogui.moveTo(infoCheck[0], infoCheck[1])
-    # except:
-    #     print("Check desclickeado\n")
+    for i in range(0,5):
+        time.sleep(1)
+        randomPosition()
     
     time.sleep(2)
     #click dropdown
@@ -45,16 +27,36 @@ while(TRUE):
 
     time.sleep(2)
 
-    # im1 = pyautogui.screenshot('qatar.png', region=(1000,800, 1100, 1100))
+    #Take screenshots
 
-    try:
-        compareInfo = pyautogui.locateOnScreen('compare.png', confidence=0.9)
-        print('COMPARANDO')
-        print(compareInfo)
-    except:
-        mixer.init() 
-        sound=mixer.Sound("sound.wav")
-        sound.play()
+    imgDetailArabia = pyautogui.screenshot("arabia.png", region=(1100,1050, 900, 150))
+    imgDetailMexico = pyautogui.screenshot("mexico.png", region=(1100,1280, 900, 150))
+    imgDetailPolonia = pyautogui.screenshot("polonia.png", region=(1100, 1510, 900, 150))
+
+    #Take out the text in images
+
+    textArabia = pytesseract.image_to_string('arabia.png')
+    textMexico = pytesseract.image_to_string('mexico.png')
+    textPolonia = pytesseract.image_to_string('polonia.png')
+    print(textArabia)
+    print(textMexico)
+    print(textPolonia)
+
+    for i in range(0,5):
+        time.sleep(1)
+        randomPosition()
+    
+    
+
+    # TELL ME THE TICKETS ARE AVAILABLE
+    # try:
+    #     compareInfo = pyautogui.locateOnScreen('compare.png', confidence=0.9)
+    #     print('COMPARANDO')
+    #     print(compareInfo)
+    # except:
+    #     mixer.init() 
+    #     sound=mixer.Sound("sound.wav")
+    #     sound.play()
 
     # time.sleep(2)
 
