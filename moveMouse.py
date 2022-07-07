@@ -4,17 +4,31 @@ import time
 import random
 from pygame import mixer
 import pytesseract
+import hashlib
 
-def randomPosition():
-    x = random.randint(0,500)
-    y = random.randint(200,500)
+def safePosition():
+    x = random.randint(0,300)
+    y = random.randint(200,250)
     pyautogui.moveTo(x, y)
+
+mixer.init() 
+sound=mixer.Sound("sound.wav")
+original_md5 = '5f3b9a8d2d554dc4d370d96ccd8bbf7a'
 
 while(TRUE):
     for i in range(0,5):
         time.sleep(1)
-        randomPosition()
+        safePosition()
     
+    #check checkbox
+    imgCheckbox = pyautogui.screenshot("compare.png", region=(1270,705, 500, 50))
+    checksumChecked = hashlib.md5(open('compare.png','rb').read()).hexdigest()
+
+    if(checksumChecked != original_md5):
+        time.sleep(2)
+        pyautogui.moveTo(685, 370)
+        pyautogui.click()
+
     time.sleep(2)
     #click dropdown
     pyautogui.moveTo(450, 370)
@@ -44,35 +58,26 @@ while(TRUE):
 
     for i in range(0,5):
         time.sleep(1)
-        randomPosition()
+        safePosition()
     
-    
-
-    # TELL ME THE TICKETS ARE AVAILABLE
-    # try:
-    #     compareInfo = pyautogui.locateOnScreen('compare.png', confidence=0.9)
-    #     print('COMPARANDO')
-    #     print(compareInfo)
-    # except:
-    #     mixer.init() 
-    #     sound=mixer.Sound("sound.wav")
-    #     sound.play()
-
-    # time.sleep(2)
-
-
-    # time.sleep(5)
-
-    #click match
-    pyautogui.moveTo(340, 570)
-    # pyautogui.click()
-
-    # for i in range(0,5):
-    #     time.sleep(5)
-    #     randomPosition()
+    if("No" in textArabia):
+        print("NO DISPONIBLE ARABIA YET")
+    else:
+        while(TRUE):
+            sound.play()
+    if("No" in textMexico):
+        print("NO DISPONIBLE MEXICO YET")
+    else:
+        while(TRUE):
+            sound.play()
+    if("No" in textPolonia):
+        print("NO DISPONIBLE POLONIA YET")
+    else:
+        while(TRUE):
+            sound.play()
 
     time.sleep(2)
 
-    #click back
-    pyautogui.moveTo(20, 60)
-    # pyautogui.click()
+    #click refresh
+    pyautogui.moveTo(90, 60)
+    pyautogui.click()
