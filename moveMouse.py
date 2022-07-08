@@ -100,7 +100,7 @@ while(TRUE):
     pyautogui.moveTo(450, 480)
     pyautogui.click()
     time.sleep(2)
-    imgDetailOctavos = pyautogui.screenshot("octavos.png", region=(1100,1395, 900, 150))
+    imgDetailOctavos = pyautogui.screenshot("octavos.png", region=(1100,1395, 900, 200))
     textOctavos = pytesseract.image_to_string('octavos.png')
 
     for i in range(0,3):
@@ -120,7 +120,7 @@ while(TRUE):
     pyautogui.moveTo(450, 525)
     pyautogui.click()
     time.sleep(2)
-    imgDetailCuartos = pyautogui.screenshot("cuartos.png", region=(1100,1260, 900, 150))
+    imgDetailCuartos = pyautogui.screenshot("cuartos.png", region=(1100,1260, 900, 200))
     textCuartos = pytesseract.image_to_string('cuartos.png')
 
     for i in range(0,3):
@@ -140,7 +140,7 @@ while(TRUE):
     pyautogui.moveTo(450, 570)
     pyautogui.click()
     time.sleep(2)
-    imgDetailSemis = pyautogui.screenshot("semis.png", region=(1100,1355, 900, 150))
+    imgDetailSemis = pyautogui.screenshot("semis.png", region=(1100,1355, 900, 200))
     textSemis = pytesseract.image_to_string('semis.png')
 
     for i in range(0,3):
@@ -163,7 +163,7 @@ while(TRUE):
     pyautogui.moveTo(450, 685)
     pyautogui.click()
     time.sleep(2)
-    imgDetailFinal = pyautogui.screenshot("final.png", region=(1100,1560, 900, 150))
+    imgDetailFinal = pyautogui.screenshot("final.png", region=(1100,1560, 900, 200))
     textFinal = pytesseract.image_to_string('final.png')
 
     for i in range(0,3):
