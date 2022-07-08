@@ -26,7 +26,6 @@ while(TRUE):
     for i in range(0,5):
         time.sleep(2)
         safePosition()
-    buttonUnChecked = FALSE
     
     #check checkbox
     imgCheckbox = pyautogui.screenshot("compare.png", region=(1270,705, 500, 50))
@@ -50,10 +49,18 @@ while(TRUE):
     time.sleep(2)
 
     #Take screenshots
+    imgCheckCheckbox = pyautogui.screenshot("checkbox.png", region=(1100,1050, 1000, 800))
+    textCheck = pytesseract.image_to_string('checkbox.png')
+    
+    if (not("Baja" in textCheck or "Media" in textCheck or "Alta" in textCheck or "Disponibilidad" in textCheck or "No" in textCheck or "Disponible" in textCheck or "Actualmente" in textCheck)):
+        pyautogui.moveTo(685, 370)
+        pyautogui.click()
+    
+    time.sleep(3)
 
-    imgDetailArabia = pyautogui.screenshot("arabia.png", region=(1100,1050, 900, 150))
-    imgDetailMexico = pyautogui.screenshot("mexico.png", region=(1100,1280, 900, 150))
-    imgDetailPolonia = pyautogui.screenshot("polonia.png", region=(1100, 1510, 900, 150))
+    imgDetailArabia = pyautogui.screenshot("arabia.png", region=(1100,1050, 1000, 200))
+    imgDetailMexico = pyautogui.screenshot("mexico.png", region=(1100,1280, 1000, 200))
+    imgDetailPolonia = pyautogui.screenshot("polonia.png", region=(1100, 1510, 1000, 200))
 
     #Take out the text in images
 
@@ -68,35 +75,18 @@ while(TRUE):
     if("No" in textArabia):
         print("NO DISPONIBLE ARABIA YET")
     else:
-        if("Disponibilidad" in textArabia):
-            pywhatkit.sendwhatmsg_to_group_instantly("BB3cfiT3zAlGw6YXXNLpMF", "Hay entradas de ARABIA CARAJO, COMPRENLE A FELIPE CAT 3. SOY EL BOT!")
-            makeSound()
-        else:
-            pyautogui.moveTo(685, 370)
-            pyautogui.click()
-            buttonUnChecked = TRUE
+        pywhatkit.sendwhatmsg_to_group_instantly("BB3cfiT3zAlGw6YXXNLpMF", "Hay entradas de ARABIA CARAJO, COMPRENLE A FELIPE CAT 3. SOY EL BOT!")
+        makeSound()
     if("No" in textMexico):
         print("NO DISPONIBLE MEXICO YET")
     else:
-        if("Disponibilidad" in textMexico):
-            pywhatkit.sendwhatmsg_to_group_instantly("BB3cfiT3zAlGw6YXXNLpMF", "Hay entradas de MEXICO CARAJO, COMPRENLE A FELIPE CAT 3. SOY EL BOT!")
-            makeSound()
-        else:
-            if(buttonUnChecked):
-                pyautogui.moveTo(685, 370)
-                pyautogui.click()
-                buttonUnChecked = TRUE
+        pywhatkit.sendwhatmsg_to_group_instantly("BB3cfiT3zAlGw6YXXNLpMF", "Hay entradas de MEXICO CARAJO, COMPRENLE A FELIPE CAT 3. SOY EL BOT!")
+        makeSound()
     if("No" in textPolonia):
         print("NO DISPONIBLE POLONIA YET")
     else:
-        if("Disponibilidad" in textPolonia):
-            pywhatkit.sendwhatmsg_to_group_instantly("BB3cfiT3zAlGw6YXXNLpMF", "Hay entradas de POLONIA CARAJO, COMPRENLE A FELIPE CAT 3. SOY EL BOT!")
-            makeSound()
-        else:
-            if(buttonUnChecked):
-                pyautogui.moveTo(685, 370)
-                pyautogui.click()
-                buttonUnChecked = TRUE
+        pywhatkit.sendwhatmsg_to_group_instantly("BB3cfiT3zAlGw6YXXNLpMF", "Hay entradas de POLONIA CARAJO, COMPRENLE A FELIPE CAT 3. SOY EL BOT!")
+        makeSound()
 
     #reset searchbar
     time.sleep(2)
