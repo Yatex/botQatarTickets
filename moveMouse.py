@@ -5,25 +5,30 @@ import random
 from pygame import mixer
 import pytesseract
 import hashlib
-import pywhatkit
-from threading import Thread
+import webbrowser
 
 def safePosition():
     x = random.randint(0,300)
     y = random.randint(200,250)
     pyautogui.moveTo(x, y)
 
+def makeSoundTempo():
+    for i in range(0,15):
+        sound.play()
+
 def makeSound():
     while(TRUE):
         sound.play()
-
 
 mixer.init() 
 sound=mixer.Sound("sound.wav")
 original_md5 = '5f3b9a8d2d554dc4d370d96ccd8bbf7a'
 
+ticketAvailable = ["Baja","Media","Alta","Disponibilidad"]
+ticketNotAvailable = ["No","Disponible","Actualmente"]
+
 while(TRUE):
-    for i in range(0,5):
+    for i in range(0,3):
         time.sleep(2)
         safePosition()
     
@@ -52,7 +57,7 @@ while(TRUE):
     imgCheckCheckbox = pyautogui.screenshot("checkbox.png", region=(1100,1050, 1000, 800))
     textCheck = pytesseract.image_to_string('checkbox.png')
     
-    if (not("Baja" in textCheck or "Media" in textCheck or "Alta" in textCheck or "Disponibilidad" in textCheck or "No" in textCheck or "Disponible" in textCheck or "Actualmente" in textCheck)):
+    if (not(any(possibleString in textCheck for possibleString in ticketAvailable) or any(possibleString in textCheck for possibleString in ticketNotAvailable))):
         pyautogui.moveTo(685, 370)
         pyautogui.click()
     
@@ -72,20 +77,20 @@ while(TRUE):
         time.sleep(1)
         safePosition()
     
-    if("No" in textArabia):
+    if(any(possibleString in textArabia for possibleString in ticketNotAvailable) and not any(possibleString in textArabia for possibleString in ticketAvailable)):
         print("NO DISPONIBLE ARABIA YET")
     else:
-        pywhatkit.sendwhatmsg_to_group_instantly("BB3cfiT3zAlGw6YXXNLpMF", "Hay entradas de ARABIA CARAJO, COMPRENLE A FELIPE CAT 3. SOY EL BOT!")
+        webbrowser.open('https://api.telegram.org/bot5495483613:AAFgQvGLTdKehIz9X3UvrI01ccRWztbO2L8/sendMessage?chat_id=-776832185&text=Hay entradas de ARABIA CARAJO, COMPRENLE A FELIPE POR FAVOR.')
         makeSound()
-    if("No" in textMexico):
+    if(any(possibleString in textMexico for possibleString in ticketNotAvailable) and not any(possibleString in textMexico for possibleString in ticketAvailable)):
         print("NO DISPONIBLE MEXICO YET")
     else:
-        pywhatkit.sendwhatmsg_to_group_instantly("BB3cfiT3zAlGw6YXXNLpMF", "Hay entradas de MEXICO CARAJO, COMPRENLE A FELIPE CAT 3. SOY EL BOT!")
+        webbrowser.open('https://api.telegram.org/bot5495483613:AAFgQvGLTdKehIz9X3UvrI01ccRWztbO2L8/sendMessage?chat_id=-776832185&text=Hay entradas de MEXICO CARAJO, COMPRENLE A FELIPE POR FAVOR.')
         makeSound()
-    if("No" in textPolonia):
+    if(any(possibleString in textPolonia for possibleString in ticketNotAvailable) and not any(possibleString in textPolonia for possibleString in ticketAvailable)):
         print("NO DISPONIBLE POLONIA YET")
     else:
-        pywhatkit.sendwhatmsg_to_group_instantly("BB3cfiT3zAlGw6YXXNLpMF", "Hay entradas de POLONIA CARAJO, COMPRENLE A FELIPE CAT 3. SOY EL BOT!")
+        webbrowser.open('https://api.telegram.org/bot5495483613:AAFgQvGLTdKehIz9X3UvrI01ccRWztbO2L8/sendMessage?chat_id=-776832185&text=Hay entradas de POLONIA CARAJO, COMPRENLE A FELIPE POR FAVOR.')
         makeSound()
 
     #reset searchbar
@@ -107,10 +112,10 @@ while(TRUE):
         time.sleep(1)
         safePosition()
 
-    if("No" in textOctavos):
+    if(any(possibleString in textOctavos for possibleString in ticketNotAvailable) and not any(possibleString in textOctavos for possibleString in ticketAvailable)):
         print("NO DISPONIBLE OCTAVOS YET")
     else:
-        pywhatkit.sendwhatmsg_to_group_instantly("BB3cfiT3zAlGw6YXXNLpMF", "Hay entradas de OCTAVOS CARAJO, COMPRENLE A FELIPE CAT 3. SOY EL BOT!")
+        webbrowser.open('https://api.telegram.org/bot5495483613:AAFgQvGLTdKehIz9X3UvrI01ccRWztbO2L8/sendMessage?chat_id=-776832185&text=Hay entradas de OCTAVOS CARAJO, COMPRENLE A FELIPE POR FAVOR.')
         makeSound()
     
     #######################
@@ -127,10 +132,10 @@ while(TRUE):
         time.sleep(1)
         safePosition()
 
-    if("No" in textCuartos):
+    if(any(possibleString in textCuartos for possibleString in ticketNotAvailable) and not any(possibleString in textCuartos for possibleString in ticketAvailable)):
         print("NO DISPONIBLE CUARTOS YET")
     else:
-        pywhatkit.sendwhatmsg_to_group_instantly("BB3cfiT3zAlGw6YXXNLpMF", "Hay entradas de CUARTOS CARAJO, COMPRENLE A FELIPE CAT 3. SOY EL BOT!")
+        webbrowser.open('https://api.telegram.org/bot5495483613:AAFgQvGLTdKehIz9X3UvrI01ccRWztbO2L8/sendMessage?chat_id=-776832185&text=Hay entradas de CUARTOS CARAJO, COMPRENLE A FELIPE POR FAVOR.')
         makeSound()
 
     #######################
@@ -147,10 +152,10 @@ while(TRUE):
         time.sleep(1)
         safePosition()
 
-    if("No" in textSemis):
+    if(any(possibleString in textSemis for possibleString in ticketNotAvailable) and not any(possibleString in textSemis for possibleString in ticketAvailable)):
         print("NO DISPONIBLE SEMIS YET")
     else:
-        pywhatkit.sendwhatmsg_to_group_instantly("BB3cfiT3zAlGw6YXXNLpMF", "Hay entradas de SEMIS CARAJO, COMPRENLE A FELIPE CAT 3. SOY EL BOT!")
+        webbrowser.open('https://api.telegram.org/bot5495483613:AAFgQvGLTdKehIz9X3UvrI01ccRWztbO2L8/sendMessage?chat_id=-776832185&text=Hay entradas de SEMIS CARAJO, COMPRENLE A FELIPE POR FAVOR.')
         makeSound()
     
     #######################
@@ -170,10 +175,10 @@ while(TRUE):
         time.sleep(1)
         safePosition()
 
-    if("No" in textFinal):
+    if(any(possibleString in textFinal for possibleString in ticketNotAvailable) and not any(possibleString in textFinal for possibleString in ticketAvailable)):
         print("NO DISPONIBLE FINAL YET")
     else:
-        pywhatkit.sendwhatmsg_to_group_instantly("BB3cfiT3zAlGw6YXXNLpMF", "Hay entradas de FINAL CARAJO, COMPRENLE A FELIPE CAT 3. SOY EL BOT!")
+        webbrowser.open('https://api.telegram.org/bot5495483613:AAFgQvGLTdKehIz9X3UvrI01ccRWztbO2L8/sendMessage?chat_id=-776832185&text=Hay entradas de FINAL CARAJO, COMPRENLE A FELIPE POR FAVOR.')
         makeSound()
 
     #click checkbox
@@ -186,11 +191,11 @@ while(TRUE):
     pyautogui.moveTo(450, 550)
     pyautogui.click()    
 
-    time.sleep(5)
+    time.sleep(4)
     pyautogui.moveTo(20, 60)
     pyautogui.click()
 
     #click refresh
-    time.sleep(5)
+    time.sleep(4)
     pyautogui.moveTo(90, 60)
     pyautogui.click()
