@@ -12,10 +12,6 @@ def safePosition():
     y = random.randint(200,250)
     pyautogui.moveTo(x, y)
 
-def makeSoundTempo():
-    for i in range(0,15):
-        sound.play()
-
 def makeSound():
     while(TRUE):
         sound.play()
