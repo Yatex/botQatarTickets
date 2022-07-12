@@ -18,7 +18,6 @@ def makeSound():
 
 mixer.init() 
 sound=mixer.Sound("sound.wav")
-original_md5 = '5f3b9a8d2d554dc4d370d96ccd8bbf7a'
 
 ticketAvailable = ["Baja","Media","Alta","Disponibilidad"]
 ticketNotAvailable = ["No","Disponible","Actualmente"]
@@ -27,27 +26,18 @@ while(TRUE):
     for i in range(0,3):
         time.sleep(2)
         safePosition()
-    
-    #check checkbox
-    imgCheckbox = pyautogui.screenshot("compare.png", region=(1270,705, 500, 50))
-    checksumChecked = hashlib.md5(open('compare.png','rb').read()).hexdigest()
 
-    if(checksumChecked != original_md5):
-        time.sleep(2)
-        pyautogui.moveTo(685, 370)
-        pyautogui.click()
-
-    time.sleep(2)
+    time.sleep(1)
     #click dropdown
     pyautogui.moveTo(450, 370)
     pyautogui.click()
 
-    time.sleep(2)
+    time.sleep(1)
     #click argentina
     pyautogui.moveTo(450, 430)
     pyautogui.click()
 
-    time.sleep(2)
+    time.sleep(1)
 
     #Take screenshots
     imgCheckCheckbox = pyautogui.screenshot("checkbox.png", region=(1100,1050, 1000, 800))
@@ -57,7 +47,7 @@ while(TRUE):
         pyautogui.moveTo(685, 370)
         pyautogui.click()
     
-    time.sleep(3)
+    time.sleep(1)
 
     imgDetailArabia = pyautogui.screenshot("arabia.png", region=(1100,1050, 1000, 200))
     imgDetailMexico = pyautogui.screenshot("mexico.png", region=(1100,1280, 1000, 200))
@@ -69,7 +59,7 @@ while(TRUE):
     textMexico = pytesseract.image_to_string('mexico.png')
     textPolonia = pytesseract.image_to_string('polonia.png')
 
-    for i in range(0,5):
+    for i in range(0,2):
         time.sleep(1)
         safePosition()
     
@@ -90,21 +80,21 @@ while(TRUE):
         makeSound()
 
     #reset searchbar
-    time.sleep(2)
+    time.sleep(1)
     pyautogui.moveTo(550, 340)
     pyautogui.click()
 
     #######################
     #check OCTAVOS
     #######################
-    time.sleep(2)
+    time.sleep(1)
     pyautogui.moveTo(450, 480)
     pyautogui.click()
-    time.sleep(2)
+    time.sleep(1)
     imgDetailOctavos = pyautogui.screenshot("octavos.png", region=(1100,1395, 900, 200))
     textOctavos = pytesseract.image_to_string('octavos.png')
 
-    for i in range(0,3):
+    for i in range(0,2):
         time.sleep(1)
         safePosition()
 
@@ -117,14 +107,14 @@ while(TRUE):
     #######################
     #check CUARTOS
     #######################
-    time.sleep(2)
+    time.sleep(1)
     pyautogui.moveTo(450, 525)
     pyautogui.click()
-    time.sleep(2)
+    time.sleep(1)
     imgDetailCuartos = pyautogui.screenshot("cuartos.png", region=(1100,1260, 900, 200))
     textCuartos = pytesseract.image_to_string('cuartos.png')
 
-    for i in range(0,3):
+    for i in range(0,2):
         time.sleep(1)
         safePosition()
 
@@ -144,7 +134,7 @@ while(TRUE):
     imgDetailSemis = pyautogui.screenshot("semis.png", region=(1100,1355, 900, 200))
     textSemis = pytesseract.image_to_string('semis.png')
 
-    for i in range(0,3):
+    for i in range(0,2):
         time.sleep(1)
         safePosition()
 
@@ -157,17 +147,17 @@ while(TRUE):
     #######################
     #check FINAL
     #######################
-    time.sleep(2)
+    time.sleep(1)
     pyautogui.moveTo(450, 645)
     pyautogui.click()
-    time.sleep(2)
+    time.sleep(1)
     pyautogui.moveTo(450, 685)
     pyautogui.click()
-    time.sleep(2)
+    time.sleep(1)
     imgDetailFinal = pyautogui.screenshot("final.png", region=(1100,1560, 900, 200))
     textFinal = pytesseract.image_to_string('final.png')
 
-    for i in range(0,3):
+    for i in range(0,2):
         time.sleep(1)
         safePosition()
 
@@ -178,20 +168,20 @@ while(TRUE):
         makeSound()
 
     #click checkbox
-    time.sleep(2)
+    time.sleep(1)
     pyautogui.moveTo(685, 370)
     pyautogui.click()
 
     #enter random match to not lose connectivity
-    time.sleep(2)
+    time.sleep(1)
     pyautogui.moveTo(450, 550)
     pyautogui.click()    
 
-    time.sleep(4)
+    time.sleep(5)
     pyautogui.moveTo(20, 60)
     pyautogui.click()
 
     #click refresh
-    time.sleep(4)
+    time.sleep(3)
     pyautogui.moveTo(90, 60)
     pyautogui.click()
