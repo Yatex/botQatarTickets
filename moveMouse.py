@@ -1,10 +1,10 @@
+from cgitb import text
 from pickle import FALSE, TRUE
 import pyautogui
 import time
 import random
 from pygame import mixer
 import pytesseract
-import hashlib
 import webbrowser
 
 def safePosition():
@@ -21,11 +21,15 @@ sound=mixer.Sound("sound.wav")
 
 ticketAvailable = ["Baja","Media","Alta","Disponibilidad"]
 ticketNotAvailable = ["No","Disponible","Actualmente"]
+correctPage = False
+correctPageAgain = False
 
 while(TRUE):
-    for i in range(0,3):
+    for i in range(0,2):
         time.sleep(2)
         safePosition()
+    correctPage = False
+    correctPageAgain = False
 
     time.sleep(1)
     #click dropdown
@@ -175,13 +179,25 @@ while(TRUE):
     #enter random match to not lose connectivity
     time.sleep(1)
     pyautogui.moveTo(450, 550)
-    pyautogui.click()    
-
-    time.sleep(5)
-    pyautogui.moveTo(20, 60)
     pyautogui.click()
 
-    #click refresh
+    while(not correctPage):
+        imgInsideMatch = pyautogui.screenshot("match.png", region=(300,750, 600, 300))
+        textMatch = pytesseract.image_to_string('match.png')
+        if("entradas" in textMatch):
+            correctPage = True
+
+    #go back to buy tickets
+    for i in range(0,3):
+        time.sleep(2)
+        safePosition()
+    pyautogui.moveTo(950, 150)
+    pyautogui.click()
     time.sleep(3)
-    pyautogui.moveTo(90, 60)
     pyautogui.click()
+
+    while(not correctPageAgain):
+        imgInsideTickets = pyautogui.screenshot("tickets.png", region=(300,500, 600, 200))
+        textTickets = pytesseract.image_to_string('tickets.png')
+        if("partidos" in textTickets):
+            correctPageAgain = True
