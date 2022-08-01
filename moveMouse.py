@@ -88,6 +88,13 @@ while(TRUE):
     pyautogui.moveTo(550, 340)
     pyautogui.click()
 
+    imgCheckCheckbox2 = pyautogui.screenshot("checkbox2.png", region=(1100,1050, 1000, 800))
+    textCheck2 = pytesseract.image_to_string('checkbox2.png')
+
+    if (not(any(possibleString in textCheck2 for possibleString in ticketAvailable) or any(possibleString in textCheck2 for possibleString in ticketNotAvailable))):
+        pyautogui.moveTo(685, 370)
+        pyautogui.click()
+
     #######################
     #check OCTAVOS
     #######################
